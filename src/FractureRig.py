@@ -49,7 +49,6 @@ def generateGeometry(geoNodes, numPieces, root):
 
 def modifyGeo(nodes, geometryNodes, nodePieces, numPieces, root):
     for objectToProcess in range(0, len(geometryNodes)):
-        # refGeo = self.FindReferenceGeometry()
         refGeo = geometryNodes[objectToProcess]
         unpack = None
         deleteUnpack = None
@@ -90,8 +89,8 @@ def modifyGeo(nodes, geometryNodes, nodePieces, numPieces, root):
             delete.setParms({'group':"@name=piece" + str(index),
                             'negate':'keep'})
             delete.setFirstInput(proxy)
-            xform = nodePieces[objectToProcess][index].createNode("xform", "XFORM")
 
+            xform = nodePieces[objectToProcess][index].createNode("xform", "XFORM")
 
             #################################
             #This is important to grab the correct transform for the pieces.

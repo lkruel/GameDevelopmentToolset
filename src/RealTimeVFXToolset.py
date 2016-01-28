@@ -104,6 +104,7 @@ def checkPointAttributeNaming(nodes, attribute):
     For each node, search for the attribute, make sure the string is in each
     entry, and then make sure that the order matches.
     '''
+
     for node in nodes:
         if node.geometry().findPointAttrib(attribute) == None:
             print 'Error. {} doesn\'t exist as a point attribute!'.format(attribute)
@@ -119,11 +120,11 @@ def checkPointAttributeNaming(nodes, attribute):
                 textCheck = attributeText
 
             if attributeText != textCheck:
-                "Error! Name inconsistency with " + entry
+                print "Error! Name inconsistency with " + entry
                 return None
 
-            if attributeNumber != idx:
-                "Error! Attribute counting inconsistency at " + entry
+            if int(attributeNumber) != idx:
+                print "Error! Attribute counting inconsistency at " + entry
                 return None
 
-    return True
+        return True
