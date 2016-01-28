@@ -4,7 +4,7 @@ Updated Fracture Rig tool designed to work with RealTimeVFXToolset.py.
 
 import hou
 import RealTimeVFXToolset
-# reload(RealTimeVFXToolset)
+reload(RealTimeVFXToolset)
 
 def init(nodes, frameRate=24):
     if checkSelections(nodes) == False:
@@ -12,6 +12,9 @@ def init(nodes, frameRate=24):
 
     geometryNodes = RealTimeVFXToolset.findNonDOPGeometry(nodes, 'soppath', 'dopobject')
     numberOfPieces = RealTimeVFXToolset.indexAttributeEntries(geometryNodes, 'name')
+
+    if checkNaming(geometryNodes) == False:
+        return "Tool failed! See above."
 
     rootNode = hou.node('/obj').createNode('subnet', 'FBX_RESULT')
     nodePieces = generateGeometry(geometryNodes, numberOfPieces, rootNode)
@@ -22,6 +25,9 @@ def checkSelections(nodes):
     if RealTimeVFXToolset.nodeSelectionValid(nodes) == None: return False
     if RealTimeVFXToolset.nodeSelectionMatchType(nodes, 'rbdpackedobject') == None: return False
     if RealTimeVFXToolset.nodeSelectionMatchParm(nodes, 'soppath') == None: return False
+
+def checkNaming(nodes):
+    if RealTimeVFXToolset.checkPointAttributeNaming(nodes, 'name') == None: return False
 
 def generateGeometry(geoNodes, numPieces, root):
     nodePieces = []
