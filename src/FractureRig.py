@@ -6,7 +6,7 @@ import hou
 import RealTimeVFXToolset
 reload(RealTimeVFXToolset)
 
-def init(nodes, frameRate=24):
+def init(nodes):
     if checkSelections(nodes) == False:
         return "Tool failed! See above."
 
@@ -19,7 +19,7 @@ def init(nodes, frameRate=24):
     rootNode = hou.node('/obj').createNode('subnet', 'FBX_RESULT')
     nodePieces = generateGeometry(geometryNodes, numberOfPieces, rootNode)
     modifyGeo(nodes, geometryNodes, nodePieces, numberOfPieces, rootNode)
-    processMesh(nodes, nodePieces, numberOfPieces, frameRate)
+    processMesh(nodes, nodePieces, numberOfPieces)
 
 def checkSelections(nodes):
     if RealTimeVFXToolset.nodeSelectionValid(nodes) == None: return False
@@ -130,13 +130,12 @@ def modifyGeo(nodes, geometryNodes, nodePieces, numPieces, root):
                 hou.node(root.path() + "/" + tempName + "_PIECE" + str(index) + "/file1").destroy()
             hou.node(root.path() + "/" + tempName + "_PIECE" + str(index)).layoutChildren()
 
-def processMesh(nodes, nodePieces, numPieces, frameRate=24):
+def processMesh(nodes, nodePieces, numPieces):
     PARMS   =   ["tx", "ty", "tz", "rx", "ry", "rz", "px", "py", "pz"]
     RFSTART = int(hou.expandString('$RFSTART'))
     RFEND = int(hou.expandString('$RFEND'))
-    frameSkip = int(hou.fps()/frameRate)
 
-    for frame in range(RFSTART, RFEND+1, frameSkip):
+    for frame in range(RFSTART, RFEND+1):
         hou.setFrame(frame)
         print "Processing Frame: " + str(frame)
 
