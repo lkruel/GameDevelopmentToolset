@@ -11,6 +11,7 @@
     <memberToolshelf name="rtMiscTools"/>
     <memberToolshelf name="rtParticleFluids"/>
     <memberToolshelf name="rigidBodies"/>
+    <memberToolshelf name="rtCloth"/>
     <memberToolshelf name="experimental"/>
   </shelfSet>
 
@@ -636,5 +637,34 @@ dialog.show()
         self.ProcessNodes()
         
 SET_PARENT()]]></script>
+  </tool>
+
+  <toolshelf name="rtCloth" label="Cloth">
+    <memberTool name="clothRig"/>
+  </toolshelf>
+
+  <tool name="clothRig" label="Cloth Rig" icon="PLASMA_App">
+    <script scriptType="python"><![CDATA[import sys
+import hou
+
+####################
+#Add src directory 
+#to path if it isn't there
+####################
+SOURCE  = hou.expandString('$HOUDINI_USER_PREF_DIR') + "/toolbar/src"
+
+if SOURCE not in sys.path:
+    sys.path.append(SOURCE)
+    
+####################
+#Import FBXImport Script
+####################
+import ClothRig
+reload(ClothRig)
+
+#################################
+#Class constructor call!
+#################################
+ClothRig.init(hou.selectedNodes())]]></script>
   </tool>
 </shelfDocument>
