@@ -278,6 +278,7 @@ RT_WispySmoke.wispyRT(kwargs, True)]]></script>
     <memberTool name="fbx_exporter_custom"/>
     <memberTool name="fbx_importer_custom"/>
     <memberTool name="splitFBX"/>
+    <memberTool name="SOPToFBX"/>
   </toolshelf>
 
   <tool name="rtFlipbookRig" label="Flipbook Rig" icon="PLASMA_App">
@@ -666,5 +667,33 @@ reload(ClothRig)
 #Class constructor call!
 #################################
 ClothRig.init(hou.selectedNodes())]]></script>
+  </tool>
+
+  <tool name="SOPToFBX" label="SOP to FBX" icon="PLASMA_App">
+    <script scriptType="python"><![CDATA['''
+'''
+
+import sys
+import hou
+
+####################
+#Add src directory 
+#to path if it isn't there
+####################
+SOURCE  = hou.expandString('$HOUDINI_USER_PREF_DIR') + "/toolbar/src"
+
+if SOURCE not in sys.path:
+    sys.path.append(SOURCE)
+    
+####################
+#Import FBXImport Script
+####################
+import PackedSOPRig
+reload(PackedSOPRig)
+
+#################################
+#Class constructor call!
+#################################
+PackedSOPRig.init(hou.selectedNodes())]]></script>
   </tool>
 </shelfDocument>
