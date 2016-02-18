@@ -35,11 +35,13 @@ def nodeSelectionMatchType(nodes = [], type = 'rbdpackedobject'):
             return False
     return True
 
-def findNonDOPGeometry(nodes, searchParameter, skipParameter):
+def findNonDOPGeometry(nodes, searchParameter=None, skipParameter=None):
     '''
     This function searches for a 'soppath' parameter to find the original SOP
     network. Then it crawls through each input[0] to find the first node that
     doesn't have the 'dopobject' attribute (basically skipping the dopimport).
+
+    If searchParameter isn't specified, then tool will look crawl through the immediate parent (ex. selecting a SOP node as opposed to looking for a path in a DOP node).
 
     for each in nodes:
         find the parameter that contains a reference to another network
@@ -51,10 +53,13 @@ def findNonDOPGeometry(nodes, searchParameter, skipParameter):
     displayNodes = []
 
     for node in nodes:
-        temp = node.parm(searchParameter).unexpandedString()
-        if 'opinputpath' in temp:
-            temp = temp.split('"')[1::2][0]
-        temp = node.node(temp)
+        if searchParameter:
+            temp = node.parm(searchParameter).unexpandedString()
+            if 'opinputpath' in temp:
+                temp = temp.split('"')[1::2][0]
+            temp = node.node(temp)
+        else:
+            temp = node
 
         referenceFound = False
         while(referenceFound == False):

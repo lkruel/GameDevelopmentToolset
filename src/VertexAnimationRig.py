@@ -3,12 +3,18 @@ import RealTimeVFXToolset
 reload(RealTimeVFXToolset)
 
 def init(nodes):
-    geometryNodes = RealTimeVFXToolset.findNonDOPGeometry(nodes, 'soppath', 'dopobject')
+    geometryNodes = RealTimeVFXToolset.findNonDOPGeometry(nodes, None, 'dopobject')
 
     bones = []
 
     subnet = hou.node('/obj').createNode('subnet', 'FBX_RESULT')
+
+    #Important: Set root crscale to 0! That will disable capture.
+    #TODO:Check if proper method
     root = subnet.createNode('bone', 'root')
+    root.setParms({ 'crscalex':0,
+                    'crscaley':0,
+                    'crscalez':0})
 
     for node in geometryNodes:
         for idx, point in enumerate(node.geometry().points()):
@@ -16,7 +22,10 @@ def init(nodes):
             bones[idx].setParms({'keeppos':True,
                                 'tx':point.position()[0],
                                 'ty':point.position()[1],
-                                'tz':point.position()[2]
+                                'tz':point.position()[2],
+                                'crscalex':0.001,
+                                'crscaley':0.001,
+                                'crscalez':0.001
                                 })
             bones[idx].setFirstInput(root)
 
@@ -37,8 +46,10 @@ def processSkeleton(clothNode, boneList):
                 hou_keyed_parm = bone.parm(PARMS[indexParm])
                 hou_keyframe = hou.Keyframe()
                 hou_keyframe.setFrame(frame)
-                hou_keyframe.setValue(clothNode.simulation().findObject(clothNode.name()).geometry().iterPoints()[idx].attribValue('P')[indexParm])
+                hou_keyframe.setValue(clothNode.geometry().iterPoints()[idx].attribValue('P')[indexParm])
                 hou_keyed_parm.setKeyframe(hou_keyframe)
+
+    hou.setFrame(RFSTART)
 
     print "Processing Complete!"
 
