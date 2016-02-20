@@ -66,3 +66,8 @@ def init(nodes):
         #Evaluating Houdini variables
         print "Timeline start frame: {}".format(hou.expandString('$RFSTART'))
         print "Timeline end frame: {}".format(hou.expandString('$RFEND'))
+
+        #Locking nodes to store their geometry
+        #Useful for storing cooked geometry, if it needs to be refreshed, just unlock and lock again.
+        #Also useful in case you need to send your hip file to someone without having to include external files.
+        subnet.setHardLocked(True)
