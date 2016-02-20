@@ -39,7 +39,7 @@ def generateGeometry(geoNodes, numPieces, root):
             tempName = geoNodes[objectToProcess].parent().name()
 
             if(hou.node('{}{}_PIECE{}'.format(root.path(), tempName, index)) == None):
-                nodePieces[objectToProcess].insert(index, root.createNode('geo{}_PIECE{}'.format(tempName, index)))
+                nodePieces[objectToProcess].insert(index, root.createNode('geo', '{}_PIECE{}'.format(tempName, index)))
             else:
                 nodePieces[objectToProcess].insert(index, hou.node('{}{}_PIECE{}'.format(root.path(), tempName index)))
 
@@ -55,10 +55,11 @@ def modifyGeo(nodes, geometryNodes, nodePieces, numPieces, root):
 
         tempName = geometryNodes[objectToProcess].parent().name()
 
-        if(refGeo.parent().node('UNPACK' + str(objectToProcess))  == None):
-            unpack = refGeo.parent().createNode('unpack', 'UNPACK' + str(objectToProcess))
-        elif (refGeo.parent().node('UNPACK' + str(objectToProcess))  != None):
-            unpack = refGeo.parent().node('UNPACK' + str(objectToProcess))
+        stringInput = 'UNPACK{}'.format(objectToProcess)
+        if(refGeo.parent().node(stringInput)  == None):
+            unpack = refGeo.parent().createNode('unpack', stringInput)
+        elif (refGeo.parent().node(stringInput)  != None):
+            unpack = refGeo.parent().node(stringInput)
         else:
             print 'ERROR 0: Cannot generate unpack node!'
 
