@@ -1,3 +1,7 @@
+'''VertexAnimationRig
+
+This tool is designed to take a SOP level vertex animation and prepare a subnet that can be exported as an FBX. The resulting FBX will contain the animated skeleton with skinned geometry. In its current form, it generates 1 bone per point.
+'''
 import hou
 import RealTimeVFXToolset
 reload(RealTimeVFXToolset)
@@ -5,12 +9,12 @@ reload(RealTimeVFXToolset)
 def init(nodes):
     geometryNodes = RealTimeVFXToolset.findNonDOPGeometry(nodes, None, 'dopobject')
 
-    bones = []
+    if geometryNodes == None:
+        return 'Error: No geometry found!'
 
+    bones = []
     subnet = hou.node('/obj').createNode('subnet', 'FBX_RESULT')
 
-    #Important: Set root crscale to 0! That will disable capture.
-    #TODO:Check if proper method
     root = subnet.createNode('bone', 'root')
     root.setParms({ 'crscalex':0,
                     'crscaley':0,
@@ -31,6 +35,7 @@ def init(nodes):
 
     processSkeleton(nodes[0], bones)
     processMesh(geometryNodes[0], subnet)
+    subnet.layoutChildren()
 
 def processSkeleton(clothNode, boneList):
     PARMS   =   ["tx", "ty", "tz"]
@@ -39,7 +44,7 @@ def processSkeleton(clothNode, boneList):
 
     for frame in range(RFSTART, RFEND+1):
         hou.setFrame(frame)
-        print "Processing Frame: " + str(frame)
+        print 'Processing Frame: {}'.format(frame)
 
         for idx, bone in enumerate(boneList):
             for indexParm in range(0,3):
@@ -69,6 +74,12 @@ def processMesh(geometryNode, fbxNode):
     capture = objectMerge.createOutputNode('capture', 'Capture')
     capture.setParms({'rootpath': '../../root'})
     capture.setHardLocked(True)
+
+    for index in range(0,len(capture.geometry().points())):
+        if len(capture.geometry().points()[index].attribValue('boneCapture')) > 2:
+            print "Warning: Multiple weights assigned to the same point!"
+            print "Warning: May contain animation errors."
+            break
 
     deform = capture.createOutputNode('deform', 'Deform')
     deform.setDisplayFlag(True)
