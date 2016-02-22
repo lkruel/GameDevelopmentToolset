@@ -125,11 +125,11 @@ def checkPointAttributeNaming(nodes, attribute):
                 textCheck = attributeText
 
             if attributeText != textCheck:
-                print "Error! Name inconsistency with " + entry
+                print "Error! Name inconsistency with {}".format(entry)
                 return None
 
             if int(attributeNumber) != idx:
-                print "Error! Attribute counting inconsistency at " + entry
+                print "Error! Attribute counting inconsistency at {}".format(entry)
                 return None
 
         return True
