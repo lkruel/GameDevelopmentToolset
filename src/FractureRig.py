@@ -41,7 +41,7 @@ def generateGeometry(geoNodes, numPieces, root):
             if(hou.node('{}{}_PIECE{}'.format(root.path(), tempName, index)) == None):
                 nodePieces[objectToProcess].insert(index, root.createNode('geo', '{}_PIECE{}'.format(tempName, index)))
             else:
-                nodePieces[objectToProcess].insert(index, hou.node('{}{}_PIECE{}'.format(root.path(), tempName index)))
+                nodePieces[objectToProcess].insert(index, hou.node('{}{}_PIECE{}'.format(root.path(), tempName, index)))
 
         nodePieces[objectToProcess][0].parent().layoutChildren()
 
