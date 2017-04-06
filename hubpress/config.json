@@ -5,6 +5,22 @@
     "branch": "gh-pages"
   },
   "theme": {
-    "name": "Casper"
+    "name": "casper"
+  },
+  "urls": {
+    "site": "https://lkruel.github.io/GameDevelopmentToolset",
+    "hubpress": "https://lkruel.github.io/GameDevelopmentToolset",
+    "theme": "//lkruel.github.io/GameDevelopmentToolset/themes/casper",
+    "images": "https://lkruel.github.io/GameDevelopmentToolset/images"
+  },
+  "initialisationConfigComponent": {
+    "name": "initialise-configuration",
+    "computed": {},
+    "methods": {},
+    "staticRenderFns": [
+      null,
+      null,
+      null
+    ]
   }
 }

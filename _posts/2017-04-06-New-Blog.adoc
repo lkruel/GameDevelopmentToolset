@@ -1,0 +1,9 @@
+= New Blog 
+// See https://hubpress.gitbooks.io/hubpress-knowledgebase/content/ for information about the parameters.
+// :hp-image: /covers/cover.png
+:published_at: 2017-04-06
+:hp-tags: Houdini, Blog, GamesDevelopment,
+// :hp-alt-title: My English Title
+
+This is a new blog for the development of the Games Toolshelf for Houdini. We will use this space for posting quick blurbs about what we're thinking, or maybe little discoveries we are making as we develop these tools. 
+
