@@ -1,6 +1,6 @@
 = New Blog 
 // See https://hubpress.gitbooks.io/hubpress-knowledgebase/content/ for information about the parameters.
-//:hp-image: /covers/cover.png
+// :hp-image: /covers/cover.png
 :published_at: 2017-04-06
 :hp-tags: Houdini, Blog, GamesDevelopment,
 // :hp-alt-title: My English Title
