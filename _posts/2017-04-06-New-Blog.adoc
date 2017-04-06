@@ -1,7 +1,6 @@
 = New Blog 
 // See https://hubpress.gitbooks.io/hubpress-knowledgebase/content/ for information about the parameters.
 :hp-image: sideFx-Houdini-16-Amarok.jpg
-:published_at: 2017-04-06
 :hp-tags: Houdini, Blog, GamesDevelopment,
 // :hp-alt-title: My English Title
 
