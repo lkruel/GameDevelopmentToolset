@@ -1,3 +1,17 @@
-<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Game Development ToolSet ]]></title><description><![CDATA[Accompanying Website to the Game Development Toolset ]]></description><link>https://lkruel.github.io/GameDevelopmentToolset</link><generator>RSS for Node</generator><lastBuildDate>Mon, 10 Apr 2017 16:15:37 GMT</lastBuildDate><atom:link href="https://lkruel.github.io/GameDevelopmentToolset/rss/" rel="self" type="application/rss+xml"/><ttl>60</ttl><item><title><![CDATA[Welcome to the updated Games Development Toolshelf]]></title><description><![CDATA[<div class="paragraph">
-<p>This is the new game development toolshelf.</p>
-</div>]]></description><link>https://lkruel.github.io/GameDevelopmentToolset/2017/04/10/Welcome-to-the-updated-Games-Development-Toolshelf.html</link><guid isPermaLink="true">https://lkruel.github.io/GameDevelopmentToolset/2017/04/10/Welcome-to-the-updated-Games-Development-Toolshelf.html</guid><pubDate>Mon, 10 Apr 2017 00:00:00 GMT</pubDate></item></channel></rss>
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Game Development ToolSet ]]></title><description><![CDATA[Accompanying Website to the Game Development Toolset ]]></description><link>https://lkruel.github.io/GameDevelopmentToolset</link><generator>RSS for Node</generator><lastBuildDate>Mon, 10 Apr 2017 19:26:08 GMT</lastBuildDate><atom:link href="https://lkruel.github.io/GameDevelopmentToolset/rss/" rel="self" type="application/rss+xml"/><ttl>60</ttl><item><title><![CDATA[Games Development ToolSet GitHub 2.0]]></title><description><![CDATA[<div class="paragraph">
+<p>This is a new blog for the development of the Games Toolshelf for Houdini. We will use this space for posting quick blurbs about what we&#8217;re thinking, or maybe little discoveries we are making as we develop these tools.</p>
+</div>
+<div class="paragraph">
+<p>The idea is to use github as a staging and development area for new Games Focused tools in Houdini. As tools mature we will bring them into the main Houdini build.</p>
+</div>
+<div class="paragraph">
+<p>This gives us flexibility to try different quick tools and see which ones the users will find useful, as well as let the tools be production hardened with a tight delivery loop for fixes.</p>
+</div>
+<div class="paragraph">
+<p>Our upcoming priorities will be bugfixes and error reporting in the current tools and then initial research into future features.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="https://lkruel.github.io/GameDevelopmentToolset/images/sideFx-Houdini-16-Amarok.jpg" alt="sideFx Houdini 16 Amarok.jpg">
+</div>
+</div>]]></description><link>https://lkruel.github.io/GameDevelopmentToolset/2017/04/10/Games-Development-Tool-Set-Git-Hub-20.html</link><guid isPermaLink="true">https://lkruel.github.io/GameDevelopmentToolset/2017/04/10/Games-Development-Tool-Set-Git-Hub-20.html</guid><category><![CDATA[Houdini]]></category><category><![CDATA[Blog]]></category><category><![CDATA[GamesDevelopment]]></category><pubDate>Mon, 10 Apr 2017 00:00:00 GMT</pubDate></item></channel></rss>
